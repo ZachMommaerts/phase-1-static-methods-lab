@@ -9,14 +9,19 @@ class Formatter {
   }
 
   static titleize(string) {
-    const words = string.split(' ');
-
-    for (let i = 0; i < words.length; i++) {
-      if (words[i] !== 'a' || words[i] !== 'an' || words[i] !== 'but' || words[i] !== 'of' || words[i] !== 'and' || words[i] !== 'for' || words[i] !== 'at' || words[i] !== 'by' || words[i] !== 'from' || words[i] !== 'the' ) {
-        words[i] = words[i][0].toUpperCase() + words[i].substr(1);
-      } 
-    }
-
+    let exceptions = [ 'the', 'a', 'an', 'but', 'of', 'and', 'for', 'at', 'by', 'from' ]
+    let result = [];
+    let arrayOfWords = string.split( " " )
+    for ( let n = 0; n < arrayOfWords.length; n++ ) {
+      if ( n == 0 ) {
+        result.push( this.capitalize( arrayOfWords[ n ] ) )
+      } else {
+        if ( exceptions.includes( arrayOfWords[ n ] ) ) {
+          result.push( arrayOfWords[ n ] )
+        } else {
+          result.push( this.capitalize( arrayOfWords[ n ] ) )
+        }
+      }
     return words.join(' ');
   }
 
