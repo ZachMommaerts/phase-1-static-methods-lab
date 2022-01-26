@@ -8,10 +8,10 @@ class Formatter {
     return string.replace( /[^A-Za-z0-9 '-]/g, '' )
   }
 
-  static titleize(string) {
+  static titleize( sentence ) {
     let exceptions = [ 'the', 'a', 'an', 'but', 'of', 'and', 'for', 'at', 'by', 'from' ]
     let result = [];
-    let arrayOfWords = string.split( " " )
+    let arrayOfWords = sentence.split( " " )
     for ( let n = 0; n < arrayOfWords.length; n++ ) {
       if ( n == 0 ) {
         result.push( this.capitalize( arrayOfWords[ n ] ) )
@@ -22,7 +22,8 @@ class Formatter {
           result.push( this.capitalize( arrayOfWords[ n ] ) )
         }
       }
-    return words.join(' ');
-  }
 
+    }
+    return result.join( " " );
+  }
 }
